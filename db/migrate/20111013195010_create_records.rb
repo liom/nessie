@@ -12,5 +12,9 @@ class CreateRecords < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :records, :name
+    add_index :records, [:name, :type]
+    add_index :records, :domain_id
   end
 end
