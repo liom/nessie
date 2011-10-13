@@ -5,13 +5,11 @@ describe Domain do
   # Domain name. Required.
   # Example: example.com
   describe "name" do
-    before do
+    before :all do
       FactoryGirl.create(:domain)
     end
     it { should validate_presence_of(:name) }
-    it "should be unique" do
-      should validate_uniqueness_of(:name)
-    end
+    it { should validate_uniqueness_of(:name) }
   end
   
   # Domain type. One of MASTER, SLAVE, NATIVE. Required.
