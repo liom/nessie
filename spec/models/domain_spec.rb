@@ -16,9 +16,9 @@ describe Domain do
   
   # Domain type. One of MASTER, SLAVE, NATIVE. Required.
   it { should validate_presence_of(:type) }
-  it { should allow_value('MASTER').for(:type) }
-  it { should allow_value('SLAVE').for(:type) }
-  it { should allow_value('NATIVE').for(:type) }
+  Domain::ALLOWED_TYPES.each do |type|
+    it { should allow_value(type).for(:type) }
+  end
   it { should_not allow_value("test").for(:type) }
 
 end
