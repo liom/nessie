@@ -1,4 +1,6 @@
 class Domain < ActiveRecord::Base
+  set_inheritance_column "sti_type"
+  
   ALLOWED_TYPES = %w(MASTER SLAVE NATIVE)
   
   validates :name, :presence => true, :uniqueness => true
