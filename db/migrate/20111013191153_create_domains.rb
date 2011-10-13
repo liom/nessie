@@ -6,8 +6,8 @@ class CreateDomains < ActiveRecord::Migration
       t.string  :master,          :null => true
       t.integer :last_check,      :null => true,  :default => nil
       t.string  :type,            :null => false
-      t.integer :notified_serial, :null => true, :default => nil
-      t.string  :account,         :null => true, :default => nil
+      t.integer :notified_serial, :null => true,  :default => nil
+      t.string  :account,         :null => true,  :default => nil
 
       t.timestamps
     end
