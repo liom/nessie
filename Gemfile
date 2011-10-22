@@ -37,11 +37,13 @@ group :test, :development do
   gem 'shoulda-matchers'
   gem 'factory_girl_rails'
   gem 'ffaker'
+  gem 'watchr'
 end
 
 group :test do
   # Pretty printed test output
   gem 'turn', :require => false
+  gem 'spork', '~> 0.9.0.rc'
 end
 
 group :console do
