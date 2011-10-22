@@ -27,6 +27,9 @@ Spork.prefork do
     # instead of true.
     config.use_transactional_fixtures = true
     
+    config.after :suite do
+      Growl.new(config.reporter) rescue nil
+    end
   end
 end
 
