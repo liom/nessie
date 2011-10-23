@@ -1,0 +1,2 @@
+class RecordA < Record
+end
