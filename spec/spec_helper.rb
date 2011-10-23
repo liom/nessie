@@ -28,7 +28,7 @@ Spork.prefork do
     config.use_transactional_fixtures = true
     
     config.after :suite do
-      Growl.new(config.reporter) rescue nil
+      Growl.new(config.reporter) rescue nil if RUBY_PLATFORM =~ /darwin/
     end
   end
 end
