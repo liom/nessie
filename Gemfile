@@ -27,6 +27,10 @@ gem 'unicorn'
 # Deploy with Capistrano
 # gem 'capistrano'
 
+gem 'ipaddress'
+
+gem 'pry'
+
 # To use debugger
 group :development do
   # gem 'ruby-debug19', :require => 'ruby-debug'
