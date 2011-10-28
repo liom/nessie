@@ -41,8 +41,24 @@ group :test, :development do
   gem 'shoulda-matchers'
   gem 'factory_girl_rails'
   gem 'ffaker'
-  gem 'watchr'
+  
+  # gem 'guard'
+  gem 'guard'
+  gem 'guard-rspec'
+  gem 'guard-spork'
 end
+
+group :development, :osx do
+	gem 'rb-fsevent', :require => false
+	# Growl Notification Transport Protocol
+	gem 'ruby_gntp'
+end
+
+group :development, :linux do
+	gem 'rb-inotify', :require => false
+	gem 'libnotify'
+end
+
 
 group :test do
   # Pretty printed test output

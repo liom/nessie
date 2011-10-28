@@ -26,10 +26,6 @@ Spork.prefork do
     # examples within a transaction, remove the following line or assign false
     # instead of true.
     config.use_transactional_fixtures = true
-    
-    config.after :suite do
-      Growl.new(config.reporter) rescue nil if RUBY_PLATFORM =~ /darwin/
-    end
   end
 end
 
