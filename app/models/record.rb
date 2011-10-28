@@ -7,4 +7,13 @@ class Record < ActiveRecord::Base
   
   belongs_to :domain
   
+  after_initialize do 
+    write_attribute :type, default_type
+  end
+
+  def default_type
+    nil
+  end
+  
 end
+
