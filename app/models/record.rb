@@ -11,6 +11,7 @@ class Record < ActiveRecord::Base
   @type = nil
 
 
+  # This mess prevents any modifications of field `type` in any ancestor.
   def self.inherited(chld)
     chld.class_eval do
       attr_readonly :type
