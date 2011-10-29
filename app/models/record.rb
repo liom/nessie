@@ -7,13 +7,28 @@ class Record < ActiveRecord::Base
   
   belongs_to :domain
   
-  after_initialize do 
-    write_attribute :type, default_type
-  end
 
-  def default_type
-    nil
-  end
+	@type = nil
+
+
+	def self.inherited(chld)
+   	chld.class_eval do
+   		attr_readonly :type
+   	
+   		after_initialize do 
+				write_attribute :type, self.class.type
+  		end
+
+		  def type
+		  	self.class.type
+		  end
+		  
+		  def self.type
+		  	@type
+		  end
+   	end 
+ 	end  
+  
   
 end
 
