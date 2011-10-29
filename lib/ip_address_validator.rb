@@ -31,7 +31,6 @@ class IpAddressValidator < ActiveModel::EachValidator
   protected
   
   def record_error(record, attribute)
-    record.errors[attribute] << "IP address is invalid."
-    true
+    record.errors.add attribute, :invalid
   end
 end
