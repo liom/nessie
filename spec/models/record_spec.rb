@@ -32,4 +32,25 @@ describe Record do
     end
   end
   
+  describe "name" do
+    it "should have fqdn if empry" do
+      domain = FactoryGirl.create(:domain, :name => 'example.com')
+      record = FactoryGirl.create(:record, :type => 'A', :domain => domain)
+      record.name.should == 'example.com'
+    end
+    
+    it "should have fqdn if relative was given" do
+      domain = FactoryGirl.create(:domain, :name => 'example.com')
+      record = FactoryGirl.create(:record, :type => 'A', :domain => domain, :name => 'www')
+      record.name.should == 'www.example.com'
+    end
+
+    it "should not have dot in the name as last symbol" do
+      domain = FactoryGirl.create(:domain, :name => 'example.com')
+      record = FactoryGirl.create(:record, :type => 'A', :domain => domain, :name => 'www.example.com.')
+      record.name.should == 'www.example.com'
+    end
+    
+  end
+  
 end

@@ -5,13 +5,14 @@ class Record < ActiveRecord::Base
 
   validates :type, :presence => true, :inclusion => { :in => ALLOWED_TYPES }
   validates :domain_id, :presence => true
+  validates :name, :presence => true
+  validates :ttl, :presence => true, :numericality => { :only_integer => true, :greater_than => 0 }
   
   belongs_to :domain
+  before_validation :set_fqdn, :set_ttl
   
 
   @type = nil
-
-
   # This mess prevents any modifications of field `type` in any ancestor.
   def self.inherited(chld)
     chld.class_eval do
@@ -31,6 +32,19 @@ class Record < ActiveRecord::Base
     end 
   end  
   
+  
+  def set_fqdn
+    return if self.domain.blank?
+
+    self.name ||= self.domain.name
+    
+    self.name.gsub!(/\.$/, '')
+    self.name = "#{self.name}.#{self.domain.name}" unless self.name =~ /#{Regexp.escape(self.domain.name)}$/
+  end
+  
+  def set_ttl
+    self.ttl ||= domain.try(:ttl) || 86400 # default dns ttl value
+  end
   
 end
 
