@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe RecordA do
+describe Record::A do
   before :each do
     @record = FactoryGirl.build(:record_a)
   end

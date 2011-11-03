@@ -3,7 +3,7 @@ FactoryGirl.define do
     association :domain
   end
   
-  factory :record_a, :parent => :record, :class => RecordA do
+  factory :record_a, :parent => :record, :class => Record::A do
 
   end
     
