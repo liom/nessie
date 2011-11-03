@@ -9,4 +9,27 @@ describe Record do
   
   it { should belong_to(:domain) }
   
+  describe "with domain" do
+
+    before(:each) do
+      @record = FactoryGirl.build :record, :domain => nil, :type => 'A'
+    end
+
+    it "should not be valid without a domain" do
+      @record.should_not be_valid
+    end
+
+    it "should require domain_id, not just a domain object" do
+      domain = FactoryGirl.build(:domain)
+      @record.domain = domain
+      @record.should_not be_valid
+    end
+    
+    it "should be ok with domain" do
+      domain = FactoryGirl.create(:domain)
+      @record.domain = domain
+      @record.should be_valid
+    end
+  end
+  
 end
