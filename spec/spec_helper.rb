@@ -33,3 +33,11 @@ Spork.each_run do
   # This code will be run each time you run your specs.
   FactoryGirl.reload
 end
+
+RSpec::Matchers.define :have_immutable_field do |attribute, value|
+  match do |model|
+    model.send(attribute).should == value
+    model.attributes[attribute] = 'asdf'
+    model.send(attribute).should == value
+  end
+end

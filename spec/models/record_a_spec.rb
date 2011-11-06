@@ -7,11 +7,7 @@ describe Record::A do
   
   it { should validate_presence_of(:content) }
   
-  it "should not be able to change record type" do
-    @record.type.should == 'A'
-    @record.type = 'MX'
-    @record.type.should == 'A'
-  end
+  it { should have_immutable_field(:type, 'A') }
   
   it "should allow valid IP address" do
     @record.content = '1.2.3.4'
