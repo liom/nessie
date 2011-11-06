@@ -1,12 +1,5 @@
 FactoryGirl.define do
-  factory :record do
-    association :domain
-    type 'A'
-  end
-  
   factory :record_a, :parent => :record, :class => Record::A do
-
+    content "1.2.3.4"
   end
-    
-  
 end
