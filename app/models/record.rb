@@ -8,7 +8,7 @@ class Record < ActiveRecord::Base
   validates :name, :presence => true
   validates :ttl, :presence => true, :numericality => { :only_integer => true, :greater_than => 0 }
   
-  belongs_to :domain
+  belongs_to :domain, :touch => true
   before_validation :set_fqdn, :set_ttl
   
 

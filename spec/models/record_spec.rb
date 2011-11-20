@@ -30,6 +30,12 @@ describe Record do
       @record.domain = domain
       @record.should be_valid
     end
+    
+    it "should update domain's timestamp after save" do
+      record = FactoryGirl.create(:record_a)
+      lambda { sleep 1; record.touch }.should change(record.domain, :updated_at).by_at_least(1.second)
+    end
+    
   end
   
   describe "name" do
