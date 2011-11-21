@@ -11,6 +11,8 @@ class Record < ActiveRecord::Base
   belongs_to :domain, :touch => true
   before_validation :set_fqdn, :set_ttl
   
+  scope :with_type, lambda {|type| where(:type => type)}
+  
 
   @type = nil
   # This mess prevents any modifications of field `type` in any ancestor.
