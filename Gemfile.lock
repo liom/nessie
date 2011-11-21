@@ -162,6 +162,7 @@ GEM
       kgio (~> 2.4)
       rack
       raindrops (~> 0.6)
+    virtual_attributes (0.0.1)
     wirble (0.1.3)
 
 PLATFORMS
@@ -193,4 +194,5 @@ DEPENDENCIES
   turn
   uglifier (>= 1.0.3)
   unicorn
+  virtual_attributes
   wirble

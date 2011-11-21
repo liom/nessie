@@ -29,6 +29,8 @@ gem 'unicorn'
 
 gem 'ipaddress'
 
+gem 'virtual_attributes'
+
 
 # To use debugger
 group :development do
