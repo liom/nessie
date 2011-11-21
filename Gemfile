@@ -29,7 +29,6 @@ gem 'unicorn'
 
 gem 'ipaddress'
 
-gem 'pry'
 
 # To use debugger
 group :development do
@@ -37,6 +36,8 @@ group :development do
 end
 
 group :test, :development do
+  gem 'pry'
+
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'factory_girl_rails'
