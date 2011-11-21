@@ -1,3 +1,5 @@
+![build status](https://secure.travis-ci.org/daemon/nessie.png)
+
 Nessie - PowerDNS web frontend
 ==============================
 
