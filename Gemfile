@@ -52,14 +52,14 @@ group :test, :development do
 end
 
 group :development, :osx do
-	gem 'rb-fsevent', :require => false
-	# Growl Notification Transport Protocol
-	gem 'ruby_gntp'
+  gem 'rb-fsevent', :require => false
+  # Growl Notification Transport Protocol
+  gem 'ruby_gntp'
 end
 
 group :development, :linux do
-	gem 'rb-inotify', :require => false
-	gem 'libnotify'
+  gem 'rb-inotify', :require => false
+  gem 'libnotify'
 end
 
 
