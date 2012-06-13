@@ -1,9 +1,9 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
-gem 'rails', '3.1.1'
+gem 'rails', '3.2.6'
 
 # Bundle edge Rails instead:
-# gem 'rails',     :git => 'git://github.com/rails/rails.git'
+# gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
 
@@ -11,8 +11,12 @@ gem 'sqlite3'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.1.4'
-  gem 'coffee-rails', '~> 3.1.1'
+  gem 'sass-rails',   '~> 3.2.3'
+  gem 'coffee-rails', '~> 3.2.1'
+
+  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
+  # gem 'therubyracer', :platforms => :ruby
+
   gem 'uglifier', '>= 1.0.3'
 end
 
@@ -21,24 +25,27 @@ gem 'jquery-rails'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
-# Use unicorn as the web server
-gem 'unicorn'
+# To use Jbuilder templates for JSON
+# gem 'jbuilder'
+
+# Use unicorn as the app server
+# gem 'unicorn'
 
 # Deploy with Capistrano
 # gem 'capistrano'
 
-gem 'ipaddress'
+# To use debugger
+# gem 'debugger'
 
+gem 'ipaddress'
 gem 'virtual_attributes'
 
-
-# To use debugger
 group :development do
   # gem 'ruby-debug19', :require => 'ruby-debug'
 end
 
 group :test, :development do
-  gem 'pry'
+  gem 'pry-rails'
 
   gem 'rspec-rails'
   gem 'shoulda-matchers'
@@ -49,29 +56,19 @@ group :test, :development do
   gem 'guard'
   gem 'guard-rspec'
   gem 'guard-spork'
-end
 
-group :development, :osx do
-  gem 'rb-fsevent', :require => false
-  # Growl Notification Transport Protocol
-  gem 'ruby_gntp'
+  # guard notifications
+  gem 'ruby_gntp', :require => false
+  gem 'libnotify', :require => false
 end
-
-group :development, :linux do
-  gem 'rb-inotify', :require => false
-  gem 'libnotify'
-end
-
 
 group :test do
-  # Pretty printed test output
-  gem 'turn', :require => false
-  gem 'spork', '~> 0.9.0.rc'
+  gem 'spork'
 end
 
-group :console do
-  gem 'wirble'
-  gem 'hirb'
-  gem 'awesome_print'
-  gem 'looksee'
-end
+# group :development do
+#   gem 'wirble'
+#   gem 'hirb'
+#   gem 'awesome_print'
+#   gem 'looksee'
+# end
