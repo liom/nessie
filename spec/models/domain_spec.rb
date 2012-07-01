@@ -2,8 +2,6 @@ require 'spec_helper'
 
 describe Domain do
 
-  # Domain name. Required.
-  # Example: example.com
   describe "name" do
     before :all do
       FactoryGirl.create(:domain)

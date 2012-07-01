@@ -12,34 +12,27 @@ describe Record do
   describe "with domain" do
 
     before(:each) do
-      @record = FactoryGirl.build :record, :domain => nil, :type => 'A'
+      @record = FactoryGirl.build :record, :type => 'A'
+    end
+
+    it "should be valid" do
+      @record.should be_valid
     end
 
     it "should not be valid without a domain" do
-      @record.should_not be_valid
-    end
-
-    it "should require domain_id, not just a domain object" do
-      domain = FactoryGirl.build(:domain)
-      @record.domain = domain
+      @record.domain = nil
       @record.should_not be_valid
     end
     
-    it "should be ok with domain" do
-      domain = FactoryGirl.create(:domain)
-      @record.domain = domain
-      @record.should be_valid
-    end
-    
-    it "should update domain's timestamp after save" do
-      record = FactoryGirl.create(:record_a)
-      lambda { sleep 1; record.touch }.should change(record.domain, :updated_at).by_at_least(1.second)
-    end
+    # it "should update domain's timestamp after save" do
+    #   record = FactoryGirl.create(:record_a)
+    #   lambda { sleep 1; record.touch }.should change(record.domain, :updated_at).by_at_least(1.second)
+    # end
     
   end
   
   describe "name" do
-    it "should have fqdn if empry" do
+    it "should have fqdn if empty" do
       domain = FactoryGirl.create(:domain, :name => 'example.com')
       record = FactoryGirl.create(:record, :type => 'A', :domain => domain)
       record.name.should == 'example.com'

@@ -8,6 +8,7 @@ class CreateDomains < ActiveRecord::Migration
       t.string  :type,            :null => false
       t.integer :notified_serial, :null => true,  :default => nil
       t.string  :account,         :null => true,  :default => nil
+      t.integer :ttl,             :null => true,  :default => 86400
 
       t.timestamps
     end

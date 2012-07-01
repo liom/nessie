@@ -1,6 +1,6 @@
 class Record < ActiveRecord::Base
-  set_inheritance_column "sti_type"
-  
+  belongs_to :domain, :touch => true
+
   ALLOWED_TYPES = %w(SOA A AAAA NS CNAME MX SRV TXT AFSDB CERT DNSKEY DS HINFO KEY LOC NAPTR NSEC PTR RP RRSIG SPF SSHFP)
 
   validates :type, :presence => true, :inclusion => { :in => ALLOWED_TYPES }
@@ -8,32 +8,9 @@ class Record < ActiveRecord::Base
   validates :name, :presence => true
   validates :ttl, :presence => true, :numericality => { :only_integer => true, :greater_than => 0 }
   
-  belongs_to :domain, :touch => true
   before_validation :set_fqdn, :set_ttl
   
   scope :with_type, lambda {|type| where(:type => type)}
-  
-
-  @type = nil
-  # This mess prevents any modifications of field `type` in any ancestor.
-  def self.inherited(chld)
-    chld.class_eval do
-      attr_readonly :type
-    
-      after_initialize do 
-        write_attribute :type, self.class.type
-      end
-
-      def type
-        self.class.type
-      end
-      
-      def self.type
-        @type
-      end
-    end 
-  end  
-  
   
   def set_fqdn
     return if self.domain.blank?
